@@ -171,7 +171,7 @@ def menu():
 	else:
 		print ("\n ! isi yg benar")
 
-def activate_licensi():
+#def activate_licensi():
 	os.system("clear")
 	logo()
 	print("\x1b[1;97mKetik \x1b[1;92madmin\x1b[1;97m untuk mendapatkan lisensi script dari admin....terima kasih\n")
