@@ -127,7 +127,7 @@ def menu():
 	print (' \x1b[1;96m[\x1b[1;97m7\x1b[1;96m] \x1b[1;97mSetting user agent')
 	print (' \x1b[1;96m[\x1b[1;97m0\x1b[1;96m] \x1b[1;91mKeluar')
 	print('')
-	romz=input(" \x1b[1;96m[\x1b[1;97m?\x1b[1;96m] \x1b[1;97mPILIH :\x1b[1;93m ")
+	romz=input(" [\x1b[1;97m?] \x1b[1;97mPILIH :\x1b[1;93m ")
 	if romz in ['']:print ("\n ! jangan kosong")
 	elif romz in ['1']:publik(coki)
 	elif romz in ['2']:massal(token,coki)
@@ -648,3 +648,4 @@ if __name__=="__main__":
 	try:os.mkdir('OK')
 	except:pass 
 	menu()
+
